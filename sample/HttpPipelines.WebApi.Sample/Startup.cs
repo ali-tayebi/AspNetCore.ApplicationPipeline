@@ -1,0 +1,40 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Pipelines.Http;
+
+namespace HttpPipelines.WebApi.Sample
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllers();
+
+            services.AddHttpPipeline(pipeline =>
+            {
+                pipeline
+                    .Add<DeveloperExceptionPageStep>()
+                    .Add<TransactionIdStep>()
+                    .Add(app => app.UseHttpsRedirection())
+                    .Add(app => app.UseRouting())
+                    .Add<SecuritySteps>()
+                    .Add<EndpointsStep>();
+            });
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            app.UseHttpPipeline();
+        }
+    }
+}
