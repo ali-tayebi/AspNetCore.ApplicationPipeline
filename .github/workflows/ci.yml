@@ -4,6 +4,8 @@ on: [push]
 
 jobs:
   build:
+    branches:
+      - '!master'
 
     runs-on: ubuntu-latest
 
