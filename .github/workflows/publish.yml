@@ -19,6 +19,6 @@ jobs:
       - name: Publish if version is updated
         uses: rohith/publish-nuget@v1
         with:
-          project_dir: src # Defaults to repository root
-          tag_format: v* # [*] gets replaced with version
-          nuget_key: ${{secrets.NUGET_API_KEY}} # nuget.org API key
+          project_dir: src/Pipelines.Http
+          tag_format: v*
+          nuget_key: ${{secrets.NUGET_API_KEY}}
