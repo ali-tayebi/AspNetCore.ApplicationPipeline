@@ -4,8 +4,23 @@ on:
     branches:
       - master
 jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v2
+        - name: Setup .NET Core 3.1.100
+          uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: 3.1.100
+        - name: Build
+          run: dotnet build --configuration Release
+        - name: Running Tests
+          run: dotnet test
+
   publish:
-    name: publish to nuget.org
+    name: Publish To NuGet.org
+    needs: build
     runs-on: ubuntu-latest
     steps:
       # Checkout
@@ -14,7 +29,6 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
            dotnet-version: 3.1.100
-
       # Publish
       - name: Publish if version is updated
         uses: rohith/publish-nuget@v1

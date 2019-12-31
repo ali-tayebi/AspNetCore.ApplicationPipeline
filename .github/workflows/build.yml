@@ -1,21 +1,19 @@
 name: Build
-
-on: [push]
-
-jobs:
-  build:
+on:
+  push:
     branches:
       - '!master'
-
+jobs:
+  build:
+    name: Build & Test
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core 3.1.100
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.100
-    - name: Build
-      run: dotnet build --configuration Release
-    - name: Unit Tests
-      run: dotnet test
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core 3.1.100
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.100
+      - name: Build
+        run: dotnet build --configuration Release
+      - name: Running Tests
+        run: dotnet test
