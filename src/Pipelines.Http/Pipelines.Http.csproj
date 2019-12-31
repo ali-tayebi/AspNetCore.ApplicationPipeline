@@ -4,8 +4,14 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <LangVersion>8</LangVersion>
     <PackageId>HttpPipelines</PackageId>
-    <Version>0.1.1</Version>
-    <Authors>Alio Tayebi</Authors>
+    <Version>0.1.2</Version>
+    <Authors>Ali Tayebi</Authors>
+    <Title>HTTP Request Pipeline</Title>
+    <Description>Asp.net core HTTP request pipeline</Description>
+    <PackageProjectUrl>https://github.com/ali-tayebi/http-pipelines</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/ali-tayebi/http-pipelines/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/ali-tayebi/http-pipelines</RepositoryUrl>
+    <PackageTags>aspnetcore;aspnet;dotnetcore;http;pipeline;http-request</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
