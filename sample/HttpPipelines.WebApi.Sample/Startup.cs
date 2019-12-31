@@ -25,8 +25,8 @@ namespace HttpPipelines.WebApi.Sample
                     .Add<DeveloperExceptionPageStep>()
                     .Add<TransactionIdStep>()
                     .Add(app => app.UseHttpsRedirection())
-                    .Add(app => app.UseRouting())
-                    .Add<SecuritySteps>()
+                    .Add("routing-step", app => app.UseRouting())
+                    .Add<SecurityStep>()
                     .Add<EndpointsStep>();
             });
         }

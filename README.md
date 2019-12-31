@@ -24,8 +24,8 @@ public void ConfigureServices(IServiceCollection services)
         pipeline
             .Add<DeveloperExceptionPageStep>()
             .Add(app => app.UseHttpsRedirection())
-            .Add("routing", app => app.UseRouting())
-            .Add<SecuritySteps>()
+            .Add("routing-step", app => app.UseRouting())
+            .Add<SecurityStep>()
             .Add<EndpointsStep>();
     });
 
@@ -43,6 +43,33 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
+Finally, steps can be added/removed on-demand. For instance, the following shows how to add step `HttpTransactionRecorderStep`
+just before step `EndpointsStep` in an integration test.
+
+For more details, please have a look at the [sample](https://github.com/ali-tayebi/http-pipelines/blob/master/sample/HttpPipelines.WebApi.Sample/Startup.cs)
+ and its [test](https://github.com/ali-tayebi/http-pipelines/blob/master/sample/HttpPipelines.WebApi.Sample.Tests/TransactionIdTests.cs) projects.
+
+````c#
+ public class TransactionIdTests : IClassFixture<WebApplicationFactory<Startup>>
+ {
+    private readonly WebApplicationFactory<Startup> _factory;
+
+    public TransactionIdTests(WebApplicationFactory<Startup> factory)
+    {
+        _factory = factory.WithWebHostBuilder(host =>
+            host.ConfigureTestServices(services =>
+            {
+                services
+                    .AddHttpPipeline(pipeline =>
+                    {
+                        pipeline.AddBefore<EndpointsStep, HttpTransactionRecorderStep>();
+                    });
+                //...
+            }));
+    }
+
+    //...
+```
 ## Prerequisites
 .Net Core version **3.1** is only supported version at the time being.
 
