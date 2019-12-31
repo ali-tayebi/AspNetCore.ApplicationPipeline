@@ -49,26 +49,26 @@ just before step `EndpointsStep` in an integration test.
 For more details, please have a look at the [sample](https://github.com/ali-tayebi/http-pipelines/blob/master/sample/HttpPipelines.WebApi.Sample/Startup.cs)
  and its [test](https://github.com/ali-tayebi/http-pipelines/blob/master/sample/HttpPipelines.WebApi.Sample.Tests/TransactionIdTests.cs) projects.
 
-````c#
- public class TransactionIdTests : IClassFixture<WebApplicationFactory<Startup>>
- {
-    private readonly WebApplicationFactory<Startup> _factory;
+```c#
+public class TransactionIdTests : IClassFixture<WebApplicationFactory<Startup>>
+{
+   private readonly WebApplicationFactory<Startup> _factory;
 
-    public TransactionIdTests(WebApplicationFactory<Startup> factory)
-    {
-        _factory = factory.WithWebHostBuilder(host =>
-            host.ConfigureTestServices(services =>
-            {
-                services
-                    .AddHttpPipeline(pipeline =>
-                    {
-                        pipeline.AddBefore<EndpointsStep, HttpTransactionRecorderStep>();
-                    });
-                //...
-            }));
-    }
+   public TransactionIdTests(WebApplicationFactory<Startup> factory)
+   {
+       _factory = factory.WithWebHostBuilder(host =>
+           host.ConfigureTestServices(services =>
+           {
+               services
+                   .AddHttpPipeline(pipeline =>
+                   {
+                       pipeline.AddBefore<EndpointsStep, HttpTransactionRecorderStep>();
+                   });
+               //...
+           }));
+   }
 
-    //...
+   //...
 ```
 ## Prerequisites
 .Net Core version **3.1** is only supported version at the time being.
