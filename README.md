@@ -19,7 +19,7 @@ public void ConfigureServices(IServiceCollection services)
 {
     //...
 
-    services.AddHttpPipeline(pipeline =>
+    services.AddApplicationPipeline(pipeline =>
     {
         pipeline
             .Add<DeveloperExceptionPageStep>()
@@ -60,7 +60,7 @@ public class TransactionIdTests : IClassFixture<WebApplicationFactory<Startup>>
            host.ConfigureTestServices(services =>
            {
                services
-                   .AddHttpPipeline(pipeline =>
+                   .AddApplicationPipeline(pipeline =>
                    {
                        pipeline.AddBefore<EndpointsStep, HttpTransactionRecorderStep>();
                    });
@@ -71,7 +71,7 @@ public class TransactionIdTests : IClassFixture<WebApplicationFactory<Startup>>
    //...
 ```
 ## Prerequisites
-.Net Core version **3.1** is only supported version at the time being.
+.Net Core version **3.1** is the only supported version.
 
 
 ## Documentation
