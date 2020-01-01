@@ -11,7 +11,7 @@ Changing application pipeline programmatically is required for some testing scen
 ## Getting Started
 First, configure and add the pipeline to the service collection using `AddApplicationPipeline` method.
 For instance, the following code shows how to create, configure, and add a `HttpPipeline` to the `IServiceCollection`.
-As you can see, this pipeline has different steps, and each step is created using **concrete classes**, **Expressions**, or **Action**.
+As you can see, this pipeline has different steps, and each step is created using **concrete Classes**, **Expressions**, or **Actions**.
 
 
 ```c#

@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <LangVersion>8</LangVersion>
     <PackageId>AspNetCore.ApplicationPipeline</PackageId>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <Authors>Ali Tayebi</Authors>
     <Title>AspNetCore.ApplicationPipeline</Title>
     <Description>HTTP request pipeline manager for ASP.Net Core applications</Description>
