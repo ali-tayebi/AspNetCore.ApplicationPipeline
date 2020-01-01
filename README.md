@@ -1,17 +1,17 @@
-# HTTP Pipelines
-<img src="https://raw.githubusercontent.com/ali-tayebi/http-pipelines/master/http-pipeline.png" alt="HttpPipelines">
+# Application Pipeline
+<img src="https://github.com/ali-tayebi/AspNetCore.ApplicationPipeline/blob/master/application-pipeline.png?raw=true" alt="ApplicationPipeline Logo">
 
-**HttpPipelines** is a package to help ASP.Net Core developers manage HTTP request pipeline programmatically.
+**AspNetCore.ApplicationPipeline** is a package to help ASP.Net Core developers manage application pipeline for HTTP requests programmatically.
 
-ASP.Net Core developers have to hard-code the HTTP request pipeline in `Configure` method in `Startup` class.
-Unfortunately, this approach stop developers from adding/removing middlewares (steps) to/from the pipeline on-demand.
+Developers have to hard-code the application pipeline in `Configure` method in `Startup` class.
+The pipelines built with this approach stop developers from adding/removing middlewares (steps) to/from the pipeline on-demand.
 
-Changing HTTP pipelines programmatically can be useful in some scenarios such as automated testing and framework development.
+Changing application pipeline programmatically is required for some testing scenarios such as well as developing frameworks.
 
 ## Getting Started
-First, configure the pipeline and add it to dependency injection using `AddHttpPipeline` method.
-For instance, the following code shows how to create, configure, and add a `HttpPipeline` to the service collection.
-As you can see, the pipeline has six different steps, and each step is created by a **concrete class**, **Expressions**, or **Action**.
+First, configure and add the pipeline to the service collection using `AddApplicationPipeline` method.
+For instance, the following code shows how to create, configure, and add a `HttpPipeline` to the `IServiceCollection`.
+As you can see, this pipeline has different steps, and each step is created using **concrete classes**, **Expressions**, or **Action**.
 
 
 ```c#
@@ -34,20 +34,20 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 
-Second, use the pipeline using `UsePipeline` method in `Configure` method in `Startup.cs` class as the following:
+Second, use the pipeline using `UseApplicationPipeline` method in `Configure` method in `Startup` class as the following:
 
 ```c#
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
-    app.UseHttpPipeline();
+    app.UseApplicationPipeline();
 }
 ```
 
-Finally, steps can be added/removed on-demand. For instance, the following shows how to add step `HttpTransactionRecorderStep`
-just before step `EndpointsStep` in an integration test.
+Now, you can add/remove pipeline steps  on-demand. For instance, the following shows how to add a custom step named `HttpTransactionRecorderStep`
+just before step `EndpointsStep` for integration test.
 
-For more details, please have a look at the [sample](https://github.com/ali-tayebi/http-pipelines/blob/master/sample/HttpPipelines.WebApi.Sample/Startup.cs)
- and its [test](https://github.com/ali-tayebi/http-pipelines/blob/master/sample/HttpPipelines.WebApi.Sample.Tests/TransactionIdTests.cs) projects.
+For more details, please have a look at the [sample](https://github.com/ali-tayebi/AspNetCore.ApplicationPipeline/blob/master/sample/HttpPipelines.WebApi.Sample/Startup.cs)
+ and its [test](https://github.com/ali-tayebi/AspNetCore.ApplicationPipeline/blob/master/sample/HttpPipelines.WebApi.Sample.Tests/TransactionIdTests.cs) projects.
 
 ```c#
 public class TransactionIdTests : IClassFixture<WebApplicationFactory<Startup>>

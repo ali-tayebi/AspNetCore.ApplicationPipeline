@@ -1,5 +1,6 @@
 using System;
 using FluentAssertions;
+using Pipelines.Exceptions;
 using Xunit;
 
 namespace Pipelines.Tests
