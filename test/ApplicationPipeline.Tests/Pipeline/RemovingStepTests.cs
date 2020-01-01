@@ -1,9 +1,9 @@
 using System;
+using ApplicationPipeline.Exceptions;
 using FluentAssertions;
-using Pipelines.Exceptions;
 using Xunit;
 
-namespace Pipelines.Tests
+namespace ApplicationPipeline.Tests.Pipeline
 {
     public class RemovingStepTests
     {

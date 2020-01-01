@@ -1,7 +1,7 @@
 using System;
-using Pipelines.Abstractions;
+using ApplicationPipeline.Abstractions;
 
-namespace Pipelines.Exceptions
+namespace ApplicationPipeline.Exceptions
 {
     [Serializable]
     public class DuplicatedPipelineStepException : Exception
@@ -11,22 +11,22 @@ namespace Pipelines.Exceptions
         public DuplicatedPipelineStepException()
         {
         }
-    
+
         public DuplicatedPipelineStepException(string message)
             : base(message)
         {
         }
-    
+
         public DuplicatedPipelineStepException(string message, Exception inner)
             : base(message, inner)
         {
         }
-        
+
         public DuplicatedPipelineStepException(IPipelineStep step)
             : this($"Duplicated step. Step with key ({step.Key}) already exists", step)
         {
         }
-        
+
         public DuplicatedPipelineStepException(string message, IPipelineStep step)
             :base(message)
         {

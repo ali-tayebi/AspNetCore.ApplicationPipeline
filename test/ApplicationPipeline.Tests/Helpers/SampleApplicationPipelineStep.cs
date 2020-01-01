@@ -1,5 +1,4 @@
 using System;
-using ApplicationPipeline;
 using Microsoft.AspNetCore.Builder;
 
 namespace ApplicationPipeline.Tests

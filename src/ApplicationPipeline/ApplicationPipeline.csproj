@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <LangVersion>8</LangVersion>
     <PackageId>AspNetCore.ApplicationPipeline</PackageId>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <Authors>Ali Tayebi</Authors>
     <Title>AspNetCore.ApplicationPipeline</Title>
     <Description>HTTP request pipeline manager for ASP.Net Core applications</Description>
@@ -12,15 +12,10 @@
     <PackageLicenseUrl>https://github.com/ali-tayebi/AspNetCore.ApplicationPipeline/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/ali-tayebi/AspNetCore.ApplicationPipeline</RepositoryUrl>
     <PackageTags>aspnetcore;dotnetcore;http;pipeline;HttpRequest</PackageTags>
-    <PackageIconUrl>https://github.com/ali-tayebi/AspNetCore.ApplicationPipeline/blob/master/application-pipeline.png?raw=true</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Pipelines\Pipelines.csproj" />
   </ItemGroup>
 
 </Project>

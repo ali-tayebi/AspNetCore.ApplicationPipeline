@@ -1,5 +1,4 @@
 using Microsoft.Extensions.DependencyInjection;
-using ApplicationPipeline;
 using ApplicationPipeline.Abstractions;
 
 namespace Microsoft.AspNetCore.Builder

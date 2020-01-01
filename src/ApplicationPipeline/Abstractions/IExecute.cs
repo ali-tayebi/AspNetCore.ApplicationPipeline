@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Pipelines.Abstractions
+namespace ApplicationPipeline.Abstractions
 {
     public interface IExecute<TInput>
     {

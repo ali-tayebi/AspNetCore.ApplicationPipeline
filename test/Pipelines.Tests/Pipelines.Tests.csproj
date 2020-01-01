@@ -19,4 +19,8 @@
       <ProjectReference Include="..\..\src\Pipelines\Pipelines.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Helpers" />
+    </ItemGroup>
+
 </Project>

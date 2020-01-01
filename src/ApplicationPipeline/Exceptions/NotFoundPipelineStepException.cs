@@ -1,7 +1,7 @@
 using System;
-using Pipelines.Abstractions;
+using ApplicationPipeline.Abstractions;
 
-namespace Pipelines.Exceptions
+namespace ApplicationPipeline.Exceptions
 {
     [Serializable]
     public class NotFoundPipelineStepException : Exception
@@ -22,12 +22,12 @@ namespace Pipelines.Exceptions
         {
             Key = key;
         }
-        
+
         public NotFoundPipelineStepException(string key)
             : this($"No step with the given key ({key}) is found", key)
         {
         }
-        
+
         public NotFoundPipelineStepException(IPipelineStep step)
             : this($"No step with the given key ({step.Key}) is found", step.Key)
         {

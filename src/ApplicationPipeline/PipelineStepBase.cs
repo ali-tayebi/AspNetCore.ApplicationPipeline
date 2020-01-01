@@ -1,7 +1,7 @@
 using System;
-using Pipelines.Abstractions;
+using ApplicationPipeline.Abstractions;
 
-namespace Pipelines
+namespace ApplicationPipeline
 {
     public abstract class PipelineStepBase<TInput> : IPipelineStep<TInput>
     {
@@ -9,14 +9,14 @@ namespace Pipelines
 
         protected PipelineStepBase(string key)
         {
-            Key = !string.IsNullOrWhiteSpace(key) 
-                ? key 
+            Key = !string.IsNullOrWhiteSpace(key)
+                ? key
                 : throw new ArgumentException("Key should not be null, empty for whitespace", nameof(key));
         }
 
         public abstract TInput Invoke(TInput input);
-        
-        public bool Equals(IPipelineStep other) => 
+
+        public bool Equals(IPipelineStep other) =>
             Key.Equals(other?.Key, StringComparison.InvariantCulture);
 
         public override bool Equals(object obj)
@@ -27,11 +27,11 @@ namespace Pipelines
             return Equals((PipelineStepBase<TInput>) obj);
         }
 
-        public override int GetHashCode()  
+        public override int GetHashCode()
         {
             return (Key != null ? Key.GetHashCode() : 0);
-        } 
-        
+        }
+
         public static bool operator ==(PipelineStepBase<TInput> obj1, IPipelineStep<TInput> obj2)
         {
             if (ReferenceEquals(obj1, obj2))

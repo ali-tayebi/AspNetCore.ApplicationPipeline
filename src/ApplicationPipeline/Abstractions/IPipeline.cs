@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace Pipelines.Abstractions
+namespace ApplicationPipeline.Abstractions
 {
-    public interface IPipeline<TStep> 
+    public interface IPipeline<TStep>
     {
         IReadOnlyCollection<TStep> Steps { get; }
         TStep Add(TStep step);

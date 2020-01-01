@@ -1,12 +1,12 @@
 using FluentAssertions;
 using Xunit;
 
-namespace Pipelines.Tests
+namespace ApplicationPipeline.Tests.Pipeline
 {
     public class FindingStepTests
     {
 	    private const string NotFoundKey = nameof(NotFoundKey);
-        
+
         private readonly  SamplePipelineStep Step1;
         private readonly  SamplePipelineStep Step2;
         private readonly  SamplePipelineStep Step3;
@@ -22,12 +22,12 @@ namespace Pipelines.Tests
             Step3 = new SamplePipelineStep(nameof(Step3));
             Step4 = new SamplePipelineStep(nameof(Step4));
             Step5 = new SamplePipelineStep(nameof(Step5));
-            
-            _sut = new Pipeline<SamplePipelineStep, int>(); 
-            _sut.Add(Step1); 
-            _sut.Add(Step2); 
-            _sut.Add(Step3); 
-            _sut.Add(Step4); 
+
+            _sut = new Pipeline<SamplePipelineStep, int>();
+            _sut.Add(Step1);
+            _sut.Add(Step2);
+            _sut.Add(Step3);
+            _sut.Add(Step4);
             _sut.Add(Step5);
         }
 
@@ -46,7 +46,7 @@ namespace Pipelines.Tests
 
             found.Should().Be(Step2);
         }
-        
+
         [Fact]
         public void FindWithKeyShouldFindStepWithGivenFunc()
         {
@@ -54,7 +54,7 @@ namespace Pipelines.Tests
 
             found.Should().Be(Step3);
         }
-        
+
         [Fact]
         public void FindShouldReturnNullForNotExistingStep()
         {
@@ -63,7 +63,7 @@ namespace Pipelines.Tests
 
             found.Should().BeNull();
         }
-        
+
         [Fact]
         public void FindWithKeyShouldReturnNullForNotExistingKey()
         {
@@ -71,7 +71,7 @@ namespace Pipelines.Tests
 
             found.Should().BeNull();
         }
-        
+
         [Fact]
         public void FindShouldReturnNullForNotFoundStep()
         {

@@ -2,7 +2,7 @@ using System;
 using FluentAssertions;
 using Xunit;
 
-namespace Pipelines.Tests
+namespace ApplicationPipeline.Tests.Pipeline
 {
     public class PipelineStepTests
     {
@@ -13,7 +13,7 @@ namespace Pipelines.Tests
 
             act.Should().Throw<ArgumentException>().And.ParamName.Should().Be("key");
         }
-        
+
         [Fact]
         public void PipelineStepsNameShouldNotBeEmpty()
         {
@@ -21,7 +21,7 @@ namespace Pipelines.Tests
 
             act.Should().Throw<ArgumentException>().And.ParamName.Should().Be("key");
         }
-        
+
         [Fact]
         public void PipelineStepsNameShouldNotBeWhitespace()
         {
@@ -29,7 +29,7 @@ namespace Pipelines.Tests
 
             act.Should().Throw<ArgumentException>().And.ParamName.Should().Be("key");
         }
-        
+
         [Fact]
         public void PipelineStepsWithTheSameNameAreEqual()
         {
@@ -47,7 +47,7 @@ namespace Pipelines.Tests
             step1.Equals(null).Should().BeFalse();
             Assert.True(step1 != null);
         }
-        
+
         [Fact]
         public void PipelineStepsWithDifferentNamesAreNotEqual()
         {
@@ -57,7 +57,7 @@ namespace Pipelines.Tests
             step1.Should().NotBeEquivalentTo(step2);
             Assert.True(step1 != step2);
         }
-        
+
         [Fact]
         public void PipelineStepsWithNullNameAreNotEqual()
         {

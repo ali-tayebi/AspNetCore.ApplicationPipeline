@@ -1,6 +1,5 @@
 using ApplicationPipeline.Abstractions;
 using Microsoft.AspNetCore.Builder;
-using Pipelines;
 
 namespace ApplicationPipeline
 {
