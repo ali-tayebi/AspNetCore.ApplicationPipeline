@@ -33,6 +33,6 @@ jobs:
       - name: Publish if version is updated
         uses: rohith/publish-nuget@v1
         with:
-          project_dir: src/Pipelines.Http
+          project_dir: src/ApplicationPipeline
           tag_format: v*
           nuget_key: ${{secrets.NUGET_API_KEY}}
